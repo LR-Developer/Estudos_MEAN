@@ -29,6 +29,20 @@ api.incluir = function(req, res) {
     res.json(foto);
 };
 
+api.alterarPorId = function(req, res) {
+
+    var foto = req.body;
+    var idFoto = req.params._id;
+
+    var indice = fotos.findIndex(function(foto  ) {
+        return fotos._id == idFoto;
+    });
+
+    fotos[indice] = foto;
+
+    res.sendStatus(200);
+};
+
 api.deletarPorId = function(req, res) {
 
     fotos = fotos.filter(function(foto) {
