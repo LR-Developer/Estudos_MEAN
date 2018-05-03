@@ -1,4 +1,5 @@
 var api = {};
+var CONTADOR = 2;
 
 var fotos = [
     {_id: 1, titulo: 'Leão', url:'http://www.fundosanimais.com/Minis/leoes.jpg' },
@@ -15,6 +16,15 @@ api.listarPorId = function(req, res) {
     var foto = fotos.find(function(foto) {
         return foto._id == req.params.id;
     });
+
+    res.json(foto);
+};
+
+api.incluir = function(req, res) {
+
+    var foto = req.body;
+    foto._id = ++CONTADOR;
+    fotos.push(foto);
 
     res.json(foto);
 };
