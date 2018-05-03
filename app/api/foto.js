@@ -12,11 +12,21 @@ api.listar = function(req, res) {
 
 api.listarPorId = function(req, res) {
 
-    var foto = fotos.find(function(foto){
+    var foto = fotos.find(function(foto) {
         return foto._id == req.params.id;
     });
 
     res.json(foto);
+};
+
+api.deletarPorId = function(req, res) {
+
+    fotos = fotos.filter(function(foto) {
+
+        return foto._id != req.params.id;
+    });
+
+    res.sendStatus(204);
 };
 
 module.exports = api;
